@@ -1,0 +1,33 @@
+@startuml
+<style>
+componentDiagram {
+  BackGroundColor #aliceblue
+  LineThickness 1
+  LineColor blue
+  Text blue
+  
+}
+document {
+  BackGroundColor white
+}
+</style>
+
+title Processamento de Arquivos no Cloud Storage
+
+actor Usuario as user
+
+node "Google Cloud" {
+     storage "Cloud Storage" as storage {
+        
+         file png
+         file jpeg
+
+     }
+     control "Cloud Function" as function
+}
+
+user --> png : Faz upload de imagem (PNG)
+png --> function : Aciona evento de novo arquivo
+function --> jpeg : Salva imagem convertida (JPEG)
+
+@enduml

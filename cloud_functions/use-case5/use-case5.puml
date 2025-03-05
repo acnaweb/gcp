@@ -1,0 +1,31 @@
+@startuml
+<style>
+componentDiagram {
+  BackGroundColor #aliceblue
+  LineThickness 1
+  LineColor blue
+  Text blue
+  
+}
+document {
+  BackGroundColor white
+}
+</style>
+
+title Monitoramento e Alertas em Tempo Real
+
+control System as system
+
+node "Google Cloud" {
+     node "Cloud Logging" as logging
+     control "Cloud Function" as function
+}
+
+node "Google Chat" as chat
+
+system --> logging : Gera logs (ex. erro crítico)
+logging --> function : Aciona evento de erro
+function --> chat : Envia alerta para o Google Chat
+
+@enduml
+

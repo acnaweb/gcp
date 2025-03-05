@@ -1,0 +1,32 @@
+@startuml
+<style>
+componentDiagram {
+  BackGroundColor #aliceblue
+  LineThickness 1
+  LineColor blue
+  Text blue
+  
+}
+document {
+  BackGroundColor white
+}
+</style>
+
+title Integração com Webhooks (Stripe)
+
+actor Usuario as user
+
+node "Stripe" as stripe
+
+node "Google Cloud" {
+     control "Cloud Function" as function
+     control "Log" as log
+}
+
+user --> stripe : Realiza pagamento
+stripe --> function : Dispara webhook (HTTP POST)
+function --> stripe : Retorna status (200 OK)
+function --> log : Registra transação no log
+
+@enduml
+

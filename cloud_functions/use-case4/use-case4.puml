@@ -1,0 +1,29 @@
+@startuml
+<style>
+componentDiagram {
+  BackGroundColor #aliceblue
+  LineThickness 1
+  LineColor blue
+  Text blue
+  
+}
+document {
+  BackGroundColor white
+}
+</style>
+
+title Execução de Tarefas Assíncronas com Pub/Sub
+
+actor Usuario as user
+
+node "Google Cloud" {
+     node "Pub/Sub" as pubsub
+     control "Cloud Function" as function
+}
+
+user --> pubsub : Publica mensagem (JSON)
+pubsub --> function : Aciona função com mensagem
+function --> pubsub : Processa a tarefa e confirma conclusão
+
+@enduml
+

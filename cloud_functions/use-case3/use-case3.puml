@@ -1,0 +1,29 @@
+@startuml
+<style>
+componentDiagram {
+  BackGroundColor #aliceblue
+  LineThickness 1
+  LineColor blue
+  Text blue
+  
+}
+document {
+  BackGroundColor white
+}
+</style>
+
+title Automação de Tarefas no Firestore
+
+actor Usuario as user
+
+node "Google Cloud" {
+     node "Firestore" as pubsub
+     control "Cloud Function" as function
+}
+
+user --> firestore : Insere novo documento
+firestore --> function : Aciona evento Firestore Trigger
+function --> firestore : Atualiza documento (adiciona timestamp)
+
+@enduml
+
