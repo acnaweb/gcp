@@ -3,7 +3,7 @@
 ## Request
 
 ```sh
-curl --location 'https://run.googleapis.com/v2/projects/dd8-data-hml/locations/us-central1/jobs/run-demo-job:run' \
+curl --location 'https://run.googleapis.com/v2/projects/[PROJECT]/locations/us-central1/jobs/run-demo-job:run' \
 --header 'Authorization: Bearer [TOKEN]' \
 --header 'Content-Type: application/json' \
 --data '{
